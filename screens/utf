@@ -1,0 +1,99 @@
+ {/* <br></br>
+            <div className={classes.root}>
+                <Typography id="discrete-slider-custom" gutterBottom>
+                    Video games
+                </Typography>
+                <Slider
+                    id="vg"
+                    defaultValue={50}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-custom"
+                    step={10}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                />
+            </div>
+            <br></br>
+            <div className={classes.root}>
+                <Typography id="discrete-slider-custom" gutterBottom>
+                    Technology
+                </Typography>
+                <Slider
+                    id="tg"
+                    defaultValue={50}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-custom"
+                    step={10}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                />
+            </div>
+            <br></br>
+            <div className={classes.root}>
+                <Typography id="discrete-slider-custom" gutterBottom>
+                    Fashion
+                </Typography>
+                <Slider
+                    id="ab"
+                    defaultValue={50}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-custom"
+                    step={10}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                />
+            </div>
+            <br></br>
+            <div className={classes.root}>
+                <Typography id="discrete-slider-custom" gutterBottom>
+                    Finance
+                </Typography>
+                <Slider
+                    id="sh"
+                    defaultValue={50}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-custom"
+                    step={10}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                />
+            </div> */}
+            {/* <br></br> */}
+            {/* <Button variant="contained" onClick={() => { parseResponses() }}>Submit Responses</Button> */}
+            {/* <br></br> */}
+            {/* <br></br> */}
+            {/* <br></br> */}
+
+            {/* <div id="sportsTest" style={{visibility: "Hidden"}}>
+                <text>Would you rather?</text>
+                <br></br>
+                <Button variant="contained">Watch a game of Football</Button>
+                <text>OR</text>
+                <Button variant="contained">Play a game of Tennis</Button>
+            </div>
+
+            <div id="animeTest" style={{visibility: "Hidden"}}>
+                <text>Would you rather?</text>
+                <br></br>
+                <Button variant="contained">Skip through episodes to get to the main plot</Button>
+                <text>OR</text>
+                <Button variant="contained">Read the Manga</Button>
+            </div>
+
+            <div id="gamerTest" style={{visibility: "Hidden"}}>
+                <text>Would you rather?</text>
+                <br></br>
+                <Button variant="contained">Play Minecraft</Button>
+                <text>OR</text>
+                <Button variant="contained">Play Call of Duty</Button>
+            </div>
+
+            <div id="techTest" style={{visibility: "Hidden"}}>
+                <text>Would you rather?</text>
+                <br></br>
+                <Button variant="contained">Have less powerful devices that last a long time</Button>
+                <text>OR</text>
+                <Button variant="contained">Have super powerful devices with limited software support</Button>
+            </div> */}
+
+            
