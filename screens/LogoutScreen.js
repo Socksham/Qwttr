@@ -1,12 +1,10 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-function Chatbot() {
+export default function LogoutScreen() {
     return (
         <View>
-            <Text>Chatbot</Text>
+            <Text></Text>
         </View>
     )
 }
-
-export default Chatbot
