@@ -3,7 +3,7 @@ import { auth } from '../config/Firebase'
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity, SafeAreaView } from 'react-native';
 import colors from '../config/colors';
 
-export default function LogoutScreen() {
+export default function LogoutScreen(props) {
     const signout = () => {
         auth.signOut()
     }

@@ -1,11 +1,20 @@
 import React from 'react'
-import { View, Text } from "react-native"
+import { SafeAreaView, Text } from "react-native"
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import QwttrHomeScreen from './QwttrHomeScreen';
+import QwttrMessagesScreen from './QwttrMessagesScreen';
+
+const Drawer = createDrawerNavigator()
 
 function QwttrScreen(props) {
     return (
-        <View>
-            <Text>Qwttr</Text>
-        </View>
+        <NavigationContainer independent="true">
+            <Drawer.Navigator initialRouteName="Home">
+                <Drawer.Screen name="Home" component={QwttrHomeScreen}></Drawer.Screen>
+                <Drawer.Screen name="Messages" component={QwttrMessagesScreen}></Drawer.Screen>
+            </Drawer.Navigator>
+        </NavigationContainer>
     )
 }
 
