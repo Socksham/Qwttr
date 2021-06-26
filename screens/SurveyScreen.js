@@ -4,7 +4,12 @@ import { View, Text } from 'react-native'
 export default function SurveyScreen() {
     return (
         <View>
-            <Text>Survey</Text>
+            <Text>Survey Survey
+            Survey
+            Survey
+            Survey
+            Survey
+            </Text>
         </View>
     )
 }
