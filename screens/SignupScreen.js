@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import colors from '../config/colors';
-import { auth } from '../config/Firebase';
+import { auth, db } from '../config/Firebase';
+import RNPickerSelect from 'react-native-picker-select';
 
 export default function Signup(props) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [userType, setUserType] = useState('quitter')
     const [error, setError] = useState('')
 
-    const registerUser = () => {
+    const registerUser = async () => {
         if (email === '' && password === '') {
             Alert.alert('Enter details to signup!')
         } else {
             setIsLoading(true)
-            auth
+            await auth
                 .createUserWithEmailAndPassword(email, password)
-                .then((res) => {
-                    console.log('User registered successfully!')
-                    auth.signInWithEmailAndPassword(email, password)
-                    .then((res) => {
-                        props.navigation.navigate('Routes')
+            console.log('User registered successfully!')
+            await auth.signInWithEmailAndPassword(email, password)
+            let user = auth.currentUser
 
-                    })
-                })
-                .catch(error => setError(error.message))
+            db.collection("users").doc(user.uid).set({
+                "user": user.email,
+                "uid": user.uid,
+                "userType": userType
+            })
+
+            if(userType === "quitter"){
+                props.navigation.navigate("Routes")
+            }else{
+                props.navigation.navigate("Survey")
+            }
+
         }
     }
 
@@ -43,6 +52,7 @@ export default function Signup(props) {
                 placeholder="Email"
                 value={email}
                 onChangeText={(val) => setEmail(val)}
+                autoCapitalize="none"
             />
             <TextInput
                 style={styles.inputStyle}
@@ -51,13 +61,21 @@ export default function Signup(props) {
                 onChangeText={(val) => setPassword(val)}
                 maxLength={15}
                 secureTextEntry={true}
+                autoCapitalize="none"
+            />
+            <RNPickerSelect
+                value={userType}
+                onValueChange={(value) => setUserType(value)}
+                items={[
+                    { label: 'Advisor', value: 'advisor' },
+                    { label: 'Quitter', value: 'quitter' },
+                ]}
             />
             <Button
                 color={colors.secondary}
                 title="Signup"
                 onPress={() => registerUser()}
             />
-
             <Text
                 style={styles.loginText}
                 onPress={() => props.navigation.navigate('Login')}>

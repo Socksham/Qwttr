@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Picker } from 'react-native'
 import { createSwitchNavigator, createAppContainer } from 'react-navigation'
 import LoginScreen from '../screens/LoginScreen'
 import Routes from '../screens/Routes'
@@ -22,8 +22,10 @@ const SwitchNavigator = createSwitchNavigator(
         }
     },
     {
-        initialRouteName: "Survey"
-    }
+        initialRouteName: "Login",
+        cardStyle: { backgroundColor: 'white' }
+    },
+
 )
 
 export default createAppContainer(SwitchNavigator)
