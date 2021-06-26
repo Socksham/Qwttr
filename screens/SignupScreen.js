@@ -1,21 +1,6 @@
-// import React from 'react'
-// import { View, Text, StyleSheet, Button, Alert, ActivityIndicatorBase } from 'react-native'
-
-// export default function SignupScreen() {
-
-//     const registerUser = () => {
-
-//     }
-
-//     return (
-//         <View>
-//             <Text>Signup</Text>
-//         </View>
-//     )
-// }
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import colors from '../config/colors';
 import { auth } from '../config/Firebase';
 
 export default function Signup(props) {
@@ -24,23 +9,6 @@ export default function Signup(props) {
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
-
-
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         displayName: '',
-    //         email: '',
-    //         password: '',
-    //         isLoading: false
-    //     }
-    // }
-
-    // updateInputVal = (val, prop) => {
-    //     const state = this.state;
-    //     state[prop] = val;
-    //     this.setState(state);
-    // }
 
     const registerUser = () => {
         if (email === '' && password === '') {
@@ -51,12 +19,11 @@ export default function Signup(props) {
                 .createUserWithEmailAndPassword(email, password)
                 .then((res) => {
                     console.log('User registered successfully!')
-                    props.navigation.navigate('Login')
-                    setIsLoading(false)
-                    setDisplayName('')
-                    setEmail('')
-                    setPassword('')
-                    console.log('navigating to login')
+                    auth.signInWithEmailAndPassword(email, password)
+                    .then((res) => {
+                        props.navigation.navigate('Routes')
+
+                    })
                 })
                 .catch(error => setError(error.message))
         }
@@ -86,7 +53,7 @@ export default function Signup(props) {
                 secureTextEntry={true}
             />
             <Button
-                color="#3740FE"
+                color={colors.secondary}
                 title="Signup"
                 onPress={() => registerUser()}
             />
@@ -107,18 +74,18 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         padding: 35,
-        backgroundColor: '#fff'
+        backgroundColor: colors.primary
     },
     inputStyle: {
         width: '100%',
         marginBottom: 15,
         paddingBottom: 15,
         alignSelf: "center",
-        borderColor: "#ccc",
+        borderColor: colors.secondary,
         borderBottomWidth: 1
     },
     loginText: {
-        color: '#3740FE',
+        color: colors.secondary,
         marginTop: 25,
         textAlign: 'center'
     },

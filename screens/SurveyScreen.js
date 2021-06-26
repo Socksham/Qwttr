@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   }
 
 
-export default function SurveyScreen() {
+export default function SurveyScreen(props) {
     const classes = useStyles();
     return (
         <View>

@@ -14,7 +14,8 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore()
 
 db.settings({
-	timestampsInSnapshots: true
+	timestampsInSnapshots: true,
+	merge: true
 })
 
 const auth = firebaseApp.auth()
