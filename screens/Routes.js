@@ -1,21 +1,21 @@
 import React from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { View, Text, Button, SafeAreaView, StatusBar, StyleSheet } from "react-native"
-import { createBottomTabsNavigator } from "@react-navigation/bottom-tabs"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import colors from "../config/colors"
 import AchievementsScreen from "./AchievementsScreen"
 import QwttrScreen from "./QwttrScreen"
 import LogoutScreen from "./LogoutScreen"
 
-const Tabs = createBottomTabsNavigator()
+const Tabs = createBottomTabNavigator()
 
 function Logout() {
-    <LogoutScreen />
+    return <LogoutScreen />
 }
 
 function Qwttr() {
-    <QwttrScreen />
+    return <QwttrScreen />
 }
 
 function Achievements() {
