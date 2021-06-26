@@ -14,10 +14,11 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore()
 
 db.settings({
-	timestampsInSnapshots: true
+	timestampsInSnapshots: true,
+	merge: true
 })
 
 const auth = firebaseApp.auth()
-const auth = firebaseApp.storage()
+const storage = firebaseApp.storage()
 
 export { db, auth, storage }

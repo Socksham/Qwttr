@@ -30,19 +30,23 @@ function Routes() {
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName
                         if (route.name === "Qwttr") {
-                            iconName = focused ? 'camera' : 'camera'
+                            iconName = focused ? 'home' : 'home'
                         } else if (route.name === "Achievements") {
-                            iconName = focused ? 'map' : 'map'
+                            iconName = focused ? 'trophy' : 'trophy'
                         } else if (route.name === "Logout") {
                             iconName = focused ? 'logout-variant' : 'logout-variant'
                         }
                         return <MaterialCommunityIcons name={iconName} size={size} color={color} />
                     }
                 })} tabBarOptions={{
-                    activeTintColor: colors.primary,
-                    inactiveTintColor: colors.secondary
+                    activeTintColor: colors.secondary,
+                    inactiveTintColor: colors.primary,
+                    style: { 
+                        borderTopWidth: 0,
+                        elevation: 0
+                     }
                 }}>
-                <Tabs.Screen name="Qwttr" component={Qwttr} />
+                <Tabs.Screen name="Qwttr" component={Qwttr} options={{ title: "Qwttr" }} />
                 <Tabs.Screen name="Achievements" options={{ title: "Achievements" }} component={Achievements} />
                 <Tabs.Screen name="Logout" options={{ title: "Logout" }} component={Logout} />
             </Tabs.Navigator>
