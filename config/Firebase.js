@@ -18,6 +18,6 @@ db.settings({
 })
 
 const auth = firebaseApp.auth()
-const auth = firebaseApp.storage()
+const storage = firebaseApp.storage()
 
 export { db, auth, storage }
