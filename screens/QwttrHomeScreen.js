@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     posts: {
         marginLeft: 15,
         marginRight: 20,
-        marginTop: 10
     }
 })
 

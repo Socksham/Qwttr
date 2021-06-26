@@ -17,8 +17,9 @@ function Post({ item }) {
                 />
                 <View style={styles.body}>
                     <Text style={styles.text}>{item.user}</Text>
+                    <Text>{item.title}</Text>
                     <Text>{item.text}</Text>
-                    <Image source="" />
+                    <Image source={item.image} />
                     <View style={styles.buttonBar}>
                         <TouchableOpacity
                             style={styles.button}
@@ -56,7 +57,8 @@ function Post({ item }) {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 10,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        marginTop: 10
     },
     flex: {
         flexDirection: 'row',
