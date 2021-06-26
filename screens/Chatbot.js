@@ -9,7 +9,7 @@ import { dialogflowConfig } from '../env';
   const BOT_USER = {
     _id: 2,
     name: 'Motivation Bot',
-    avatar: 'https://placeimg.com/140/140/any',
+    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvW95lXn6DYmKxYq8BHFFEOy9AgKKQPNeLw&usqp=CAU',
   }
 
 class Chatbot extends Component {
@@ -44,6 +44,7 @@ class Chatbot extends Component {
     }));
 
     let message = messages[0].text;
+    console.log(message)
     Dialogflow_V2.requestQuery(
       message,
       result => this.handleGoogleResponse(result),
