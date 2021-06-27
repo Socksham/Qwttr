@@ -3,6 +3,7 @@ import { View, Text, TextInput, ScrollView } from 'react-native'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Slider, Button} from 'react-native-elements';
+import { auth, db } from '../config/Firebase';
 import {Picker} from '@react-native-picker/picker';
 
 
@@ -30,8 +31,40 @@ export default function SurveyScreen(props) {
     }
 
     const finalizeAnswers = () => {
-      alert("Done!")
-      alert(interest1+";"+oneSlider)
+
+      var data = {"interest1":interest1,"interest2":interest2,"interest3":interest3,"interest4":interest4,"interest5":interest5, }
+      // alert("Done!")
+      // alert(interest1+";"+oneSlider)
+      let user = auth.currentUser
+      var batch = db.batch();
+      let docRef = db.collection("users").doc(user.uid);
+      docRef.set({
+        data
+      }, {merge:true})
+      alert(docRef.user)
+      // batch.set(docRef, {user: "sus_man3@gmail.com"});
+      // batch.commit().then(() => {
+      //   // ...
+      // });
+      // docRef.get().then((doc)=>{
+      //   doc.data()
+      // })
+
+
+
+      alert("docRef.data().user")
+      db.collection("users").where("userType", "==", "advisor")
+      .get()
+      .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              alert(doc.id, " => ", doc.data());
+              alert(doc.data().data)
+          });
+      })
+      .catch((error) => {
+          alert("Error getting documents: ", error);
+      });
       props.navigation.navigate("Routes")
     }
 
