@@ -26,7 +26,10 @@ export default function Signup(props) {
             db.collection("users").doc(user.uid).set({
                 "user": user.email,
                 "uid": user.uid,
-                "userType": userType
+                "userType": userType,
+                "streakNum": 11,
+                "numOfFriends": 22,
+                "numOfHobbies": 33
             })
 
             if(userType === "quitter"){

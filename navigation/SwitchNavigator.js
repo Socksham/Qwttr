@@ -25,7 +25,7 @@ const SwitchNavigator = createSwitchNavigator(
         }
     },
     {
-        initialRouteName: "Chatbot",
+        initialRouteName: "Login",
         cardStyle: { backgroundColor: 'white' }
     },
 
