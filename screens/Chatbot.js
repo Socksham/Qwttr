@@ -1,11 +1,14 @@
 
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { Dialogflow_V2 } from 'react-native-dialogflow';
 
 import { dialogflowConfig } from '../env';
+import { SafeAreaView } from 'react-navigation';
+
+import colors from "../config/colors.js"
 
 const BOT_USER = {
   _id: 2,
@@ -68,15 +71,23 @@ class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        <GiftedChat
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          user={{
-            _id: 1
-          }}
-        />
-      </View>
+      <Fragment>
+        <SafeAreaView style={{ flex: 0, backgroundColor: colors.secondary }} />
+        <SafeAreaView>
+          <View style={{height: "8%", justifyContent: "center", alignItems: "center", backgroundColor: colors.secondary}}>
+            <Image style = {{resizeMode: "contain", height: "90%"}} source = {require('../assets/qwttr.jpg')}></Image>
+          </View>
+          <View style={{ height: "90%", backgroundColor: '#fff' }}>
+            <GiftedChat
+              messages={this.state.messages}
+              onSend={messages => this.onSend(messages)}
+              user={{
+                _id: 1
+              }}
+            />
+          </View>
+        </SafeAreaView>
+      </Fragment>
     );
   }
 }
