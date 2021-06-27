@@ -11,21 +11,21 @@ const SwitchNavigator = createSwitchNavigator(
         Login: {
             screen: LoginScreen,
         },
-        Signup: {
-            screen: SignupScreen
-        },
-        Survey: {
-            screen: SurveyScreen
-        },
-        Routes: {
-            screen: Routes
-        },
-        // Chatbot: {
-        //     screen: Chatbot
-        // }
+        // Signup: {
+        //     screen: SignupScreen
+        // },
+        // Survey: {
+        //     screen: SurveyScreen
+        // },
+        // Routes: {
+        //     screen: Routes
+        // },
+        Chatbot: {
+            screen: Chatbot
+        }
     },
     {
-        initialRouteName: "Login",
+        initialRouteName: "Chatbot",
         cardStyle: { backgroundColor: 'white' }
     },
 
