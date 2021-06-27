@@ -25,10 +25,43 @@ export default function SurveyScreen(props) {
     const [interest4, setInterest4] = useState("Anime");
     const [interest5, setInterest5] = useState("Sports");
     const [screen2, setScreen2] = useState(false)
-
+    const counselorNumList = []
+    const counselorIDList = []
+    var counselorSize = 0
+    var once=true
 
     const evaluateAnswer = () => {
       setScreen2(!screen2)
+    }
+
+    const finalCounselor = () => {
+      counselorSize = (counselorSize-1)
+      if(counselorSize==0){
+        alert(counselorIDList[counselorNumList.indexOf(Math.max(...counselorNumList))])
+      }
+    }
+
+
+    const compareCounselor = (num1, num2, num3, num4, num5, int1, int2, int3, int4, int5) => {
+      const counsNumArray = [num1, num2, num3, num4, num5];
+      const counsIntArray = [int1, int2, int3, int4, int5];
+      const intArray = [interest1, interest2, interest3, interest4, interest5]
+      const numArray = [oneSlider, twoSlider, threeSlider, fourSlider, fiveSlider]
+      var counselorRank = 0
+      intArray.forEach(
+        element => {
+          if(counsIntArray.includes(element)){
+            var similarInt = Math.abs((numArray[intArray.indexOf(element)] / counsNumArray[counsIntArray.indexOf(element)])-1)
+            //alert(similarInt)
+            if(similarInt <= 0.4){
+              counselorRank = counselorRank + (numArray[intArray.indexOf(element)] * (similarInt+1))
+            } else {
+              counselorRank = counselorRank + 0.1
+            }
+          }
+        }
+      );
+      return(counselorRank)
     }
 
     const finalizeAnswers = () => {
@@ -37,7 +70,7 @@ export default function SurveyScreen(props) {
       // alert("Done!")
       // alert(interest1+";"+oneSlider)
       let user = auth.currentUser
-      var batch = db.batch();
+      // var batch = db.batch();
       let docRef = db.collection("users").doc(user.uid);
       docRef.set({
         data
@@ -58,15 +91,28 @@ export default function SurveyScreen(props) {
       .get()
       .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
+              if(once){
+                counselorSize = (querySnapshot.size)
+              }
+              once=false
+              //alert(counselorSize)
               // doc.data() is never undefined for query doc snapshots
               // alert(doc.id, " => ", doc.data());
-              var int1 = doc.data().data["interest1"]
-              var int2 = doc.data().data["interest2"]
-              var int3 = doc.data().data["interest3"]
-              var int4 = doc.data().data["interest4"]
-              var int5 = doc.data().data["interest5"]
-              var counselorInterest = [int1, int2, int3, int4, int5]
-              alert(Math.max(...counselorInterest))
+              var dataSnap = doc.data().data
+              var num1 = dataSnap["number1"]
+              var num2 = dataSnap["number2"]
+              var num3 = dataSnap["number3"]
+              var num4 = dataSnap["number4"]
+              var num5 = dataSnap["number5"]
+              var int1 = dataSnap["interest1"]
+              var int2 = dataSnap["interest2"]
+              var int3 = dataSnap["interest3"]
+              var int4 = dataSnap["interest4"]
+              var int5 = dataSnap["interest5"]
+              var conName = doc.data().user
+              counselorNumList.push(compareCounselor(num1, num2, num3, num4, num5, int1, int2, int3, int4, int5))
+              counselorIDList.push(conName)
+              finalCounselor()
               // for (var i=0;i<counselorInterest.length,i++){
               //   alert(i)
               // }
@@ -74,8 +120,11 @@ export default function SurveyScreen(props) {
           });
       })
       .catch((error) => {
-          alert("Error getting documents: ", error);
+          // alert("Error getting documents: ", error);
       });
+      //alert(counselorNumList.indexOf(Math.max(...counselorNumList)))
+      //alert(counselorIDList[0])
+
       props.navigation.navigate("Routes")
     }
 

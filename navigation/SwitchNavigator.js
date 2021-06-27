@@ -25,7 +25,7 @@ const SwitchNavigator = createSwitchNavigator(
         }
     },
     {
-        initialRouteName: "Survey",
+        initialRouteName: "Signup",
         cardStyle: { backgroundColor: 'white' }
     },
 

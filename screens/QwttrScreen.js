@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import QwttrHomeScreen from './QwttrHomeScreen';
 import QwttrMessagesScreen from './QwttrMessagesScreen';
 import QwttrRoutes from './QwttrRoutes';
+import MessagesStack from './MessagesStack';
 
 const Drawer = createDrawerNavigator()
 
@@ -13,7 +14,7 @@ function QwttrScreen(props) {
         <NavigationContainer independent="true">
             <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={QwttrRoutes}></Drawer.Screen>
-                <Drawer.Screen name="Messages" component={QwttrMessagesScreen}></Drawer.Screen>
+                <Drawer.Screen name="Rooms" component={MessagesStack}></Drawer.Screen>
             </Drawer.Navigator>
         </NavigationContainer>
     )
