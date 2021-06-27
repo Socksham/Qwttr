@@ -6,28 +6,22 @@ import {Slider, Button} from 'react-native-elements';
 import {Picker} from '@react-native-picker/picker';
 
 
-export default function SurveyScreen() {
+export default function SurveyScreen(props) {
     const [oneSlider, setOneSlider] = useState(5)
     const [twoSlider, setTwoSlider] = useState(5)
     const [threeSlider, setThreeSlider] = useState(5)
     const [fourSlider, setFourSlider] = useState(5)
     const [fiveSlider, setFiveSlider] = useState(5)
-    const [moneySlider, setMoneySlider] = useState(5)
-    const [question, setQuestion] = useState("")
-    const [questionOR, setQuestionOR] = useState("")
-    const [question1, setQuestion1] = useState("")
-    const [question2, setQuestion2] = useState("")
-    const [questionNum, setQuestionNum] = useState(0)
     const [selectedLanguage1, setSelectedLanguage1] = useState("Sports");
-    const [selectedLanguage2, setSelectedLanguage2] = useState("Sports");
-    const [selectedLanguage3, setSelectedLanguage3] = useState("Sports");
-    const [selectedLanguage4, setSelectedLanguage4] = useState("Sports");
+    const [selectedLanguage2, setSelectedLanguage2] = useState("Anime");
+    const [selectedLanguage3, setSelectedLanguage3] = useState("Gaming");
+    const [selectedLanguage4, setSelectedLanguage4] = useState("Anime");
     const [selectedLanguage5, setSelectedLanguage5] = useState("Sports");
-    const [interest1, setInterest1] = useState("Select an interest or enter a custom one");
-    const [interest2, setInterest2] = useState("Select an interest or enter a custom one");
-    const [interest3, setInterest3] = useState("Select an interest or enter a custom one");
-    const [interest4, setInterest4] = useState("Select an interest or enter a custom one");
-    const [interest5, setInterest5] = useState("Select an interest or enter a custom one");
+    const [interest1, setInterest1] = useState("Sports");
+    const [interest2, setInterest2] = useState("Anime");
+    const [interest3, setInterest3] = useState("Gaming");
+    const [interest4, setInterest4] = useState("Anime");
+    const [interest5, setInterest5] = useState("Sports");
     const [screen2, setScreen2] = useState(false)
 
 
@@ -37,6 +31,8 @@ export default function SurveyScreen() {
 
     const finalizeAnswers = () => {
       alert("Done!")
+      alert(interest1+";"+oneSlider)
+      props.navigation.navigate("Routes")
     }
 
     const evaluateAnswers = (text, name, number) => {
