@@ -9,21 +9,21 @@ import { Picker } from '@react-native-picker/picker';
 import colors from "../config/colors.js"
 
 export default function SurveyScreen(props) {
-	const [oneSlider, setOneSlider] = useState(5)
-	const [twoSlider, setTwoSlider] = useState(5)
-	const [threeSlider, setThreeSlider] = useState(5)
-	const [fourSlider, setFourSlider] = useState(5)
-	const [fiveSlider, setFiveSlider] = useState(5)
+	const [oneSlider, setOneSlider] = useState(10)
+	const [twoSlider, setTwoSlider] = useState(10)
+	const [threeSlider, setThreeSlider] = useState(10)
+	const [fourSlider, setFourSlider] = useState(10)
+	const [fiveSlider, setFiveSlider] = useState(10)
 	const [selectedLanguage1, setSelectedLanguage1] = useState("Sports");
 	const [selectedLanguage2, setSelectedLanguage2] = useState("Anime");
 	const [selectedLanguage3, setSelectedLanguage3] = useState("Gaming");
-	const [selectedLanguage4, setSelectedLanguage4] = useState("Anime");
-	const [selectedLanguage5, setSelectedLanguage5] = useState("Sports");
+	const [selectedLanguage4, setSelectedLanguage4] = useState("Fashion");
+	const [selectedLanguage5, setSelectedLanguage5] = useState("Food");
 	const [interest1, setInterest1] = useState("Sports");
 	const [interest2, setInterest2] = useState("Anime");
 	const [interest3, setInterest3] = useState("Gaming");
-	const [interest4, setInterest4] = useState("Anime");
-	const [interest5, setInterest5] = useState("Sports");
+	const [interest4, setInterest4] = useState("Fashion");
+	const [interest5, setInterest5] = useState("Food");
 	const [screen2, setScreen2] = useState(false)
 	const counselorNumList = []
 	const counselorIDList = []
@@ -182,6 +182,8 @@ export default function SurveyScreen(props) {
 									<Picker.Item label="Sports" value="Sports" />
 									<Picker.Item label="Anime" value="Anime" />
 									<Picker.Item label="Gaming" value="Gaming" />
+                  <Picker.Item label="Fashion" value="Fashion" />
+                  <Picker.Item label="Food" value="Food" />
 								</Picker>
 
 								<TextInput
@@ -196,6 +198,8 @@ export default function SurveyScreen(props) {
 									<Picker.Item label="Sports" value="Sports" />
 									<Picker.Item label="Anime" value="Anime" />
 									<Picker.Item label="Gaming" value="Gaming" />
+                  <Picker.Item label="Fashion" value="Fashion" />
+                  <Picker.Item label="Food" value="Food" />
 								</Picker>
 								<TextInput
 									onChangeText={(text) => evaluateAnswers(text, "custom", 3)}
@@ -209,6 +213,8 @@ export default function SurveyScreen(props) {
 									<Picker.Item label="Sports" value="Sports" />
 									<Picker.Item label="Anime" value="Anime" />
 									<Picker.Item label="Gaming" value="Gaming" />
+                  <Picker.Item label="Fashion" value="Fashion" />
+                  <Picker.Item label="Food" value="Food" />
 								</Picker>
 								<TextInput
 									onChangeText={(text) => evaluateAnswers(text, "custom", 4)}
@@ -222,6 +228,8 @@ export default function SurveyScreen(props) {
 									<Picker.Item label="Sports" value="Sports" />
 									<Picker.Item label="Anime" value="Anime" />
 									<Picker.Item label="Gaming" value="Gaming" />
+                  <Picker.Item label="Fashion" value="Fashion" />
+                  <Picker.Item label="Food" value="Food" />
 								</Picker>
 								<TextInput
 									onChangeText={(text) => evaluateAnswers(text, "custom", 5)}
@@ -235,6 +243,8 @@ export default function SurveyScreen(props) {
 									<Picker.Item label="Sports" value="Sports" />
 									<Picker.Item label="Anime" value="Anime" />
 									<Picker.Item label="Gaming" value="Gaming" />
+                  <Picker.Item label="Fashion" value="Fashion" />
+                  <Picker.Item label="Food" value="Food" />
 								</Picker>
 								<Button
 									title="Next Page"
@@ -256,7 +266,7 @@ export default function SurveyScreen(props) {
 							<Text style={surveyStyles.directionTextSmaller}>How many hours per week do you spend on {interest1}? {"\n\n"} Selected: {oneSlider} hours</Text>
 							<Slider
 								value={oneSlider}
-								maximumValue={10}
+								maximumValue={20}
 								minimumValue={0}
 								step={1}
 								onValueChange={(value) => setOneSlider(value)}
@@ -266,7 +276,7 @@ export default function SurveyScreen(props) {
 							<Text style={surveyStyles.directionTextSmaller}>How many hours per week do you spend on {interest2}? {"\n\n"} Selected: {twoSlider} hours</Text>
 							<Slider
 								value={twoSlider}
-								maximumValue={10}
+								maximumValue={20}
 								minimumValue={0}
 								step={1}
 								onValueChange={(value) => setTwoSlider(value)}
@@ -276,7 +286,7 @@ export default function SurveyScreen(props) {
 							<Text style={surveyStyles.directionTextSmaller}>How many hours per week do you spend on {interest3}? {"\n\n"} Selected: {threeSlider} hours</Text>
 							<Slider
 								value={threeSlider}
-								maximumValue={10}
+								maximumValue={20}
 								minimumValue={0}
 								step={1}
 								onValueChange={(value) => setThreeSlider(value)}
@@ -286,7 +296,7 @@ export default function SurveyScreen(props) {
 							<Text style={surveyStyles.directionTextSmaller}>How many hours per week do you spend on {interest4}? {"\n\n"} Selected: {fourSlider} hours</Text>
 							<Slider
 								value={fourSlider}
-								maximumValue={10}
+								maximumValue={20}
 								minimumValue={0}
 								step={1}
 								onValueChange={(value) => setFourSlider(value)}
@@ -296,7 +306,7 @@ export default function SurveyScreen(props) {
 							<Text style={surveyStyles.directionTextSmaller}>How many hours per week do you spend on {interest5}? {"\n\n"} Selected: {fiveSlider} hours</Text>
 							<Slider
 								value={fiveSlider}
-								maximumValue={10}
+								maximumValue={20}
 								minimumValue={0}
 								step={1}
 								onValueChange={(value) => setFiveSlider(value)}
