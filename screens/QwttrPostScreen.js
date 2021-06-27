@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
         width: screenWidth - 18,
         height: 100,
         borderRadius: 2,
-        borderBottomWidth: 3
     },
     icon: {
         marginBottom: 10

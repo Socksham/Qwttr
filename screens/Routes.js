@@ -25,7 +25,7 @@ function Achievements() {
 function Routes() {
     return (
         <NavigationContainer>
-            <Tabs.Navigator initialRoute="Qwttr"
+            <Tabs.Navigator initialRoute="Achievements"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName

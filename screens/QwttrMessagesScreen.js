@@ -27,7 +27,6 @@ export default function QwttrMessagesScreen({ route, navigation }) {
     // ])
 
     const getMessages = () => {
-        alert(room)
         db.collection("rooms").doc(room).collection("messages").get().then((querySnapshot => {
             querySnapshot.forEach((doc) => {
                 let docData = doc.data()
@@ -54,7 +53,7 @@ export default function QwttrMessagesScreen({ route, navigation }) {
     useEffect(() => {
         getMessages()
     }, [])
-    
+
     const onSend = useCallback(async (messages = []) => {
         let uuid = uuidv4()
 
@@ -82,7 +81,6 @@ export default function QwttrMessagesScreen({ route, navigation }) {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-
             <GiftedChat
                 messages={messages}
                 onSend={messages => onSend(messages)}
@@ -90,12 +88,6 @@ export default function QwttrMessagesScreen({ route, navigation }) {
                     _id: 1,
                 }}
             />
-
-            <TouchableOpacity onPress={() => {
-                navigation.navigate("Rooms")
-            }}>
-                <Text>BUTTON</Text>
-            </TouchableOpacity>
         </SafeAreaView>
     )
 }
