@@ -26,14 +26,15 @@ export default function SurveyScreen(props) {
     const [screen2, setScreen2] = useState(false)
     const counselorNumList = []
     const counselorIDList = []
-    const [counselorSize, setCounselorSize] = useState(0)
+    var counselorSize = 0
+    var once=true
 
     const evaluateAnswer = () => {
       setScreen2(!screen2)
     }
 
     const finalCounselor = () => {
-      setCounselorSize(counselorSize-1)
+      counselorSize = (counselorSize-1)
       if(counselorSize==0){
         alert(counselorIDList[counselorNumList.indexOf(Math.max(...counselorNumList))])
       }
@@ -68,7 +69,7 @@ export default function SurveyScreen(props) {
       // alert("Done!")
       // alert(interest1+";"+oneSlider)
       let user = auth.currentUser
-      var batch = db.batch();
+      // var batch = db.batch();
       let docRef = db.collection("users").doc(user.uid);
       docRef.set({
         data
@@ -88,9 +89,12 @@ export default function SurveyScreen(props) {
       db.collection("users").where("userType", "==", "advisor")
       .get()
       .then((querySnapshot) => {
-          setCounselorSize(querySnapshot.size)
           querySnapshot.forEach((doc) => {
-              querySnapshot.size
+              if(once){
+                counselorSize = (querySnapshot.size)
+              }
+              once=false
+              //alert(counselorSize)
               // doc.data() is never undefined for query doc snapshots
               // alert(doc.id, " => ", doc.data());
               var dataSnap = doc.data().data
@@ -104,7 +108,7 @@ export default function SurveyScreen(props) {
               var int3 = dataSnap["interest3"]
               var int4 = dataSnap["interest4"]
               var int5 = dataSnap["interest5"]
-              var conName = doc.data().uid
+              var conName = doc.data().user
               counselorNumList.push(compareCounselor(num1, num2, num3, num4, num5, int1, int2, int3, int4, int5))
               counselorIDList.push(conName)
               finalCounselor()
