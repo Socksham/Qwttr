@@ -20,12 +20,12 @@ const SwitchNavigator = createSwitchNavigator(
         Routes: {
             screen: Routes
         },
-        Chatbot: {
-            screen: Chatbot
-        }
+        // Chatbot: {
+        //     screen: Chatbot
+        // }
     },
     {
-        initialRouteName: "Chatbot",
+        initialRouteName: "Login",
         cardStyle: { backgroundColor: 'white' }
     },
 

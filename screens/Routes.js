@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 import colors from "../config/colors"
 import AchievementsScreen from "./AchievementsScreen"
 import QwttrScreen from "./QwttrScreen"
-import LogoutScreen from "./LogoutScreen"
+import Chatbot from "./Chatbot"
 
 const Tabs = createBottomTabNavigator()
 
@@ -33,8 +33,8 @@ function Routes() {
                             iconName = focused ? 'home' : 'home'
                         } else if (route.name === "Achievements") {
                             iconName = focused ? 'trophy' : 'trophy'
-                        } else if (route.name === "Logout") {
-                            iconName = focused ? 'logout-variant' : 'logout-variant'
+                        } else if (route.name === "Chatbot") {
+                            iconName = focused ? 'chat' : 'chat'
                         }
                         return <MaterialCommunityIcons name={iconName} size={size} color={color} />
                     }
@@ -48,7 +48,7 @@ function Routes() {
                 }}>
                 <Tabs.Screen name="Qwttr" component={Qwttr} options={{ title: "Qwttr" }} />
                 <Tabs.Screen name="Achievements" options={{ title: "Achievements" }} component={Achievements} />
-                <Tabs.Screen name="Logout" options={{ title: "Logout" }} component={Logout} />
+                <Tabs.Screen name="Chatbot" options={{ title: "Chatbot" }} component={Chatbot} />
             </Tabs.Navigator>
         </NavigationContainer>
     )

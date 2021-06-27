@@ -6,7 +6,7 @@ import colors from '../config/colors';
 import { db } from '../config/Firebase';
 import Post from '../components/Post';
 
-const QwttrHomeScreen = () => {
+const QwttrHomeScreen = (props) => {
 
     const [data, setData] = useState()
 
@@ -32,7 +32,7 @@ const QwttrHomeScreen = () => {
                         // reverse={true}
                         raised={true}
                         onPress={() => {
-
+                            props.navigation.navigate("QwttrPost")
                         }}
                     />
                 </View>
