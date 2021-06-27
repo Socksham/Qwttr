@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
 import { FlatList, TouchableWithoutFeedback } from "react-native-gesture-handler"
 import { Icon } from "react-native-elements"
 import colors from '../config/colors';
@@ -21,33 +21,36 @@ const QwttrHomeScreen = (props) => {
 
     return (
         <SafeAreaView>
-            <View style={styles.flex}>
-                <Text style={styles.largeText}>Home</Text>
-                <View style={styles.icon}
-                >
-                    <Icon
-                        name='add-outline'
-                        type='ionicon'
-                        color={colors.primary}
-                        // reverse={true}
-                        raised={true}
-                        onPress={() => {
-                            props.navigation.navigate("QwttrPost")
+            <ScrollView>
+
+                <View style={styles.flex}>
+                    <Text style={styles.largeText}>Home</Text>
+                    <View style={styles.icon}
+                    >
+                        <Icon
+                            name='add-outline'
+                            type='ionicon'
+                            color={colors.primary}
+                            // reverse={true}
+                            raised={true}
+                            onPress={() => {
+                                props.navigation.navigate("QwttrPost")
+                            }}
+                        />
+                    </View>
+                </View>
+                <View style={styles.posts}>
+                    <FlatList
+                        data={data}
+                        renderItem={({ item }) => {
+                            return (
+                                <Post item={item} />
+                            )
                         }}
+                        keyExtractor={item => item.uid}
                     />
                 </View>
-            </View>
-            <View style={styles.posts}>
-                <FlatList
-                    data={data}
-                    renderItem={({ item }) => {
-                        return (
-                            <Post item={item} />
-                        )
-                    }}
-                    keyExtractor={item => item.uid}
-                />
-            </View>
+            </ScrollView>
 
         </SafeAreaView>
     )

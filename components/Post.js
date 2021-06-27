@@ -3,28 +3,30 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Avatar, Icon } from "react-native-elements"
 import { Button } from "react-native-elements"
 import colors from '../config/colors';
+import Comments from './Comments';
 
-function Post({ item }) {
+function Post(props) {
     return (
         <View style={styles.card}>
             <View style={styles.flex}>
                 <Avatar
-                    title={item.user.charAt(0).toUpperCase()}
+                    title={props.item.user.charAt(0).toUpperCase()}
                     activeOpacity={0.7}
                     rounded
                     size='medium'
                     overlayContainerStyle={{ backgroundColor: 'grey' }}
                 />
                 <View style={styles.body}>
-                    <Text style={styles.text}>{item.user}</Text>
+                    <Text style={styles.text}>{props.item.user}</Text>
                     <View style={{marginBottom: 10, marginTop: 10}}>
-                        <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
+                        <Image style={{width: 100, height: 100}} source={{uri: props.item.image}} />
                     </View>
-                    <Text>{item.title}</Text>
-                    <Text>{item.text}</Text>
+                    <Text>{props.item.title}</Text>
+                    <Text>{props.item.text}</Text>
                     <View style={styles.buttonBar}>
                         <TouchableOpacity
                             style={styles.button}
+                            onPress={() => {props.navigation.navigate("QwttrPost")}}
                         >
                             <Icon
                                 name='heart-outline'
@@ -37,6 +39,7 @@ function Post({ item }) {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.button}
+                            onPress={() => {props.navigation.navigate("QwttrPost")}}
                         >
                             <Icon
                                 name='chatbubble-outline'
@@ -48,6 +51,7 @@ function Post({ item }) {
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <Comments item={props.item}/>
                 </View>
 
             </View>
