@@ -23,35 +23,6 @@ function Post(props) {
                     </View>
                     <Text style={{fontWeight:"600"}}>{props.item.title}</Text>
                     <Text>{props.item.text}</Text>
-                    <View style={styles.buttonBar}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => {props.navigation.navigate("QwttrPost")}}
-                        >
-                            <Icon
-                                name='heart-outline'
-                                type='ionicon'
-                                color={'black'}
-                                size={20}
-                            />
-                            <Text style={styles.btnText}>Like
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => {props.navigation.navigate("QwttrPost")}}
-                        >
-                            <Icon
-                                name='chatbubble-outline'
-                                type='ionicon'
-                                color={'black'}
-                                size={20}
-                            />
-                            <Text style={styles.btnText}>Comment
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <Comments item={props.item}/>
                 </View>
 
             </View>
