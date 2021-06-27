@@ -19,7 +19,6 @@ const AchievementsScreen = () => {
     db.collection("users").doc(user.uid).get().then((doc) => {
         if (doc.exists) {
             setStreakNum(doc.data().streakNum)
-            console.log("yoyoyoyoyoyoy: " + streakNum)
             setNumOfFriends(doc.data().numOfFriends)
             setNumOfHobbies(doc.data().numOfHobbies)
         } else {

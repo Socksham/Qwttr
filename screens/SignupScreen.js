@@ -32,11 +32,7 @@ export default function Signup(props) {
                 "numOfHobbies": 33
             })
 
-            if(userType === "quitter"){
-                props.navigation.navigate("Routes")
-            }else{
-                props.navigation.navigate("Survey")
-            }
+            props.navigation.navigate("Survey")
 
         }
     }

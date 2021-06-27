@@ -17,9 +17,11 @@ function Post({ item }) {
                 />
                 <View style={styles.body}>
                     <Text style={styles.text}>{item.user}</Text>
+                    <View style={{marginBottom: 10, marginTop: 10}}>
+                        <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
+                    </View>
                     <Text>{item.title}</Text>
                     <Text>{item.text}</Text>
-                    <Image source={item.image} />
                     <View style={styles.buttonBar}>
                         <TouchableOpacity
                             style={styles.button}
