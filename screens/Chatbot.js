@@ -71,13 +71,7 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <SafeAreaView style={{ flex: 0, backgroundColor: colors.secondary }} />
-        <SafeAreaView>
-          <View style={{height: "8%", justifyContent: "center", alignItems: "center", backgroundColor: colors.secondary}}>
-            <Image style = {{resizeMode: "contain", height: "90%"}} source = {require('../assets/qwttr.jpg')}></Image>
-          </View>
-          <View style={{ height: "90%", backgroundColor: '#fff' }}>
+          <View style={{flex:1, backgroundColor: '#fff' }}>
             <GiftedChat
               messages={this.state.messages}
               onSend={messages => this.onSend(messages)}
@@ -86,8 +80,6 @@ class App extends Component {
               }}
             />
           </View>
-        </SafeAreaView>
-      </Fragment>
     );
   }
 }
