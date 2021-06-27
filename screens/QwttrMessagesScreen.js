@@ -54,7 +54,7 @@ export default function QwttrMessagesScreen({ route, navigation }) {
     useEffect(() => {
         getMessages()
     }, [])
-
+    
     const onSend = useCallback(async (messages = []) => {
         let uuid = uuidv4()
 
@@ -74,7 +74,7 @@ export default function QwttrMessagesScreen({ route, navigation }) {
             _id: count + 1,
             text: messages[messages.length - 1].text,
             createdAt: new Date(),
-            user_id: 2,
+            user_id: 1,
             user_name: email
         }
         )

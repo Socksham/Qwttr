@@ -5,16 +5,19 @@ import {
     FlatList,
     SafeAreaView,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    TextInput
 } from "react-native";
 import { db, auth } from "../config/Firebase";
 import { Card, Avatar } from "react-native-elements";
 import color from "color";
 import colors from '../config/colors';
-
+import { Icon } from "react-native-elements"
+import { v4 as uuidv4 } from "uuid";
 
 const QwttrRoomsScreen = (props) => {
     const [rooms, setRooms] = useState([]);
+    const [email, setEmail] = useState("")
 
     const getRooms = () => {
         setRooms([]);
@@ -45,13 +48,48 @@ const QwttrRoomsScreen = (props) => {
         console.log("WFUEF");
         getRooms();
     }, []);
-    let long_name = auth.currentUser.email
+
+    const addRoom = () => {
+        let uuid = uuidv4()
+        let emailSelf = auth.currentUser.email
+        db.collection("rooms").doc(emailSelf+email).set({
+            uid: uuid,
+            user1: emailSelf,
+            user2: email
+        })
+        getRooms()
+    }
+
     return (
         <SafeAreaView>
-            <View style={styles.title}>
+            {/* <View style={styles.title}>
             <Text style={styles.titleText}>Friends</Text>
 
-            </View>
+            </View> */}
+            <View style={styles.flex2}>
+                    <Text style={styles.largeText}>Friends</Text>
+                    <View style={styles.icon}
+                    >
+                        <Icon
+                            name='add-outline'
+                            type='ionicon'
+                            color={colors.primary}
+                            // reverse={true}
+                            raised={true}
+                            onPress={() => {
+                                addRoom()
+                            }}
+                        />
+                    </View>
+                   
+                </View>
+                <TextInput
+                style={styles.inputBox}
+                value={email}
+                onChangeText={(email) => setEmail(email)}
+                placeholder="Email"
+                autoCapitalize="none"
+            />
             <FlatList
                 data={rooms}
                 renderItem={({ item }) => {
@@ -135,7 +173,38 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'black',
         marginLeft: 5
-    }
+    },
+    entire: {
+        backgroundColor:colors.secondary
+    },
+    icon: {
+        marginTop: 5,
+    },
+    flex2: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginLeft: 15,
+        marginRight: 10,
+        marginBottom: 10
+    },
+    largeText: {
+        fontSize: 60,
+        color: colors.secondary
+    },
+    posts: {
+        marginLeft: 15,
+        marginRight: 20,
+    },
+    inputBox: {
+        width: "91%",
+        fontSize: 16,
+        borderColor: colors.secondary,
+        borderWidth: 3,
+        padding: 15,
+        borderRadius: 30,
+        marginLeft: 17,
+        marginBottom: 5
+    },
 })
 
 export default QwttrRoomsScreen;
