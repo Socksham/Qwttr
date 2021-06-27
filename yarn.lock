@@ -5911,6 +5911,11 @@
     "react-native-ratings" "8.0.4"
     "react-native-size-matters" "^0.3.1"
 
+"react-native-fullwidth-image@^0.1.3":
+  "integrity" "sha512-nFe5EAEPlPaT1vw1abwnNmSZN9oLMzNXJAKKxeuWqPI9L7rGhXhpZH4KEBUzbqkk+58TjdT9d2bf070/GB4PGQ=="
+  "resolved" "https://registry.npmjs.org/react-native-fullwidth-image/-/react-native-fullwidth-image-0.1.3.tgz"
+  "version" "0.1.3"
+
 "react-native-gesture-handler@*", "react-native-gesture-handler@^1.10.3", "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz"
