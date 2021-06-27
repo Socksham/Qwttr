@@ -20,7 +20,7 @@ const QwttrHomeScreen = (props) => {
     }, [])
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style = {styles.entire}>
             <ScrollView>
 
                 <View style={styles.flex}>
@@ -57,6 +57,9 @@ const QwttrHomeScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
+    entire: {
+        backgroundColor:colors.secondary
+    },
     icon: {
         marginTop: 5,
     },
@@ -67,7 +70,8 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     largeText: {
-        fontSize: 60
+        fontSize: 60,
+        color: "white"
     },
     posts: {
         marginLeft: 15,

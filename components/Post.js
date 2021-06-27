@@ -13,15 +13,15 @@ function Post(props) {
                     title={props.item.user.charAt(0).toUpperCase()}
                     activeOpacity={0.7}
                     rounded
-                    size='medium'
-                    overlayContainerStyle={{ backgroundColor: 'grey' }}
+                    size='small'
+                    overlayContainerStyle={{ backgroundColor: colors.secondary }}
                 />
                 <View style={styles.body}>
                     <Text style={styles.text}>{props.item.user}</Text>
-                    <View style={{marginBottom: 10, marginTop: 10}}>
-                        <Image style={{width: 100, height: 100}} source={{uri: props.item.image}} />
+                    <View style={{marginBottom: 10, marginTop: 10, marginLeft:"3%"}}>
+                        <Image style={{width: 250, height: 175, borderRadius:"10%"}} source={{uri: props.item.image}} />
                     </View>
-                    <Text>{props.item.title}</Text>
+                    <Text style={{fontWeight:"600"}}>{props.item.title}</Text>
                     <Text>{props.item.text}</Text>
                     <View style={styles.buttonBar}>
                         <TouchableOpacity
