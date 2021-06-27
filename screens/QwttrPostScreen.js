@@ -1,12 +1,16 @@
 import React, { useState, useRef } from 'react'
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, Platform, TextInput } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, Platform, TextInput, Button , Dimensions} from 'react-native'
 import * as Progress from 'react-native-progress';
-import { storage } from '../config/Firebase';
+import { auth, db, storage } from '../config/Firebase';
 import colors from '../config/colors';
 import * as ImagePicker from 'expo-image-picker';
 import { v4 as uuidv4 } from 'uuid';
+import { Icon } from "react-native-elements"
+import firebase from "firebase"
 
-const QwttrPostScreen = () => {
+let screenWidth = Dimensions.get("window").width
+
+const QwttrPostScreen = (props) => {
 
     let uuid = uuidv4()
 
@@ -37,36 +41,89 @@ const QwttrPostScreen = () => {
         const blob = await response.blob()
 
         var ref = storage.ref().child("images/" + uuid).put(blob)
-        console.log("images/" + uuid)
-        setImage("images/" + uuid)
-        return ref.put(blob)
+
+        ref.on(
+            "state_changed",
+            (snapshot) => {
+            },
+            (error) => {
+                console.log(error);
+                alert(error);
+            },
+            () => {
+                storage
+                    .ref("images")
+                    .child(uuid)
+                    .getDownloadURL()
+                    .then(url => {
+                        setImage(url);
+                        db.collection("posts").add({
+                            date: firebase.firestore.FieldValue.serverTimestamp(),
+                            text: text,
+                            likes: 0,
+                            likedBy: [],
+                            title: title,
+                            user: auth.currentUser.email,
+                            image: url
+                        })
+                    })
+            }
+        )
+        props.navigation.navigate("QwttrHome")
+
     }
 
 
     return (
-        <SafeAreaView style={styles.container}>
-
-            <Text style={styles.largeText}>Post</Text>
-            <View>
-                <Image style={{ width: 100, height: 100 }} source={{ uri: image }} />
-                <TextInput
-                    style={styles.inputBox}
-                    onChangeText={(text) => { setTitle(text) }}
-                    value={title}
-                />
-                <TextInput
-                    style={styles.inputBox}
-
-                    onChangeText={(text) => { setText(text) }}
-                    value={text}
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={choosePhotoFromLibrary}
+        <SafeAreaView>
+            <View style={styles.container}>
+                <Text style={styles.largeText}>Post</Text>
+                <View style={styles.icon}
                 >
-                    <Text style={styles.btnText}>Add Image
-                    </Text>
-                </TouchableOpacity>
+                    <Icon
+                        name='arrow-back-outline'
+                        type='ionicon'
+                        color={colors.primary}
+                        // reverse={true}
+                        raised={true}
+                        onPress={() => {
+                            props.navigation.navigate("QwttrHome")
+                        }}
+                    />
+                </View>
+
+                <View style={styles.postInfoContainer}>
+                    <View style={styles.imageView}>
+                        <Image style={styles.imageView} source={{ uri: image }} />
+
+                    </View>
+                    <TextInput
+                        style={styles.inputBox}
+                        onChangeText={(text) => { setTitle(text) }}
+                        value={title}
+                    />
+                    <TextInput
+                        style={styles.inputBox}
+
+                        onChangeText={(text) => { setText(text) }}
+                        value={text}
+                    />
+                    <View style={styles.icon}
+                    >
+                        <Icon
+                            name='add-outline'
+                            type='ionicon'
+                            color={colors.primary}
+                            // reverse={true}
+                            raised={true}
+                            onPress={() => {
+                                choosePhotoFromLibrary()
+                            }}
+                        />
+                    </View>
+
+                </View>
+
             </View>
 
         </SafeAreaView>
@@ -75,7 +132,12 @@ const QwttrPostScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 10
+        marginLeft: 10,
+        marginRight: 10
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start'
     },
     largeText: {
         fontSize: 60
@@ -91,10 +153,22 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 15,
-        // backgroundColor: "green",
         flexDirection: "row",
         alignItems: 'center',
     },
+    postInfoContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    imageView: {
+        width: screenWidth - 18,
+        height: 100,
+        borderRadius: 2,
+        borderBottomWidth: 3
+    },
+    icon: {
+        marginBottom: 10
+    }
 })
 
 export default QwttrPostScreen
