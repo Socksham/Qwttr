@@ -5,7 +5,7 @@ import LoginScreen from '../screens/LoginScreen'
 import Routes from '../screens/Routes'
 import SignupScreen from '../screens/SignupScreen'
 import SurveyScreen from '../screens/SurveyScreen'
-
+import Chatbot from '../screens/Chatbot'
 const SwitchNavigator = createSwitchNavigator(
     {
         Login: {
@@ -19,13 +19,15 @@ const SwitchNavigator = createSwitchNavigator(
         },
         Routes: {
             screen: Routes
+        },
+        Chatbot: {
+            screen: Chatbot
         }
     },
     {
-        initialRouteName: "Login",
+        initialRouteName: "Chatbot",
         cardStyle: { backgroundColor: 'white' }
     },
 
 )
-
 export default createAppContainer(SwitchNavigator)
