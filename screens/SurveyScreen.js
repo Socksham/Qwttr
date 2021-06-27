@@ -32,7 +32,7 @@ export default function SurveyScreen(props) {
 
     const finalizeAnswers = () => {
 
-      var data = {"interest1":interest1,"interest2":interest2,"interest3":interest3,"interest4":interest4,"interest5":interest5, }
+      var data = {"interest1":interest1,"interest2":interest2,"interest3":interest3,"interest4":interest4,"interest5":interest5,"number1":oneSlider,"number2":twoSlider,"number3":threeSlider,"number4":fourSlider, "number5":fiveSlider}
       // alert("Done!")
       // alert(interest1+";"+oneSlider)
       let user = auth.currentUser
@@ -41,7 +41,7 @@ export default function SurveyScreen(props) {
       docRef.set({
         data
       }, {merge:true})
-      alert(docRef.user)
+      // alert(docRef.user)
       // batch.set(docRef, {user: "sus_man3@gmail.com"});
       // batch.commit().then(() => {
       //   // ...
@@ -52,14 +52,24 @@ export default function SurveyScreen(props) {
 
 
 
-      alert("docRef.data().user")
+      // alert("docRef.data().user")
       db.collection("users").where("userType", "==", "advisor")
       .get()
       .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
-              alert(doc.id, " => ", doc.data());
-              alert(doc.data().data)
+              // alert(doc.id, " => ", doc.data());
+              var int1 = doc.data().data["interest1"]
+              var int2 = doc.data().data["interest2"]
+              var int3 = doc.data().data["interest3"]
+              var int4 = doc.data().data["interest4"]
+              var int5 = doc.data().data["interest5"]
+              var counselorInterest = [int1, int2, int3, int4, int5]
+              alert(Math.max(...counselorInterest))
+              // for (var i=0;i<counselorInterest.length,i++){
+              //   alert(i)
+              // }
+              // alert(doc.get("data"))
           });
       })
       .catch((error) => {
