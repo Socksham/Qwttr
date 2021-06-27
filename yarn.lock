@@ -2089,11 +2089,6 @@
     "sudo-prompt" "^9.0.0"
     "wcwidth" "^1.0.1"
 
-"@react-native-community/masked-view@>= 0.1.0":
-  "integrity" "sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw=="
-  "resolved" "https://registry.npmjs.org/@react-native-community/masked-view/-/masked-view-0.1.11.tgz"
-  "version" "0.1.11"
-
 "@react-native-community/voice@^1.1.9":
   "integrity" "sha512-6QC51lIxdtPyIWyJEG7qsZ0nyRQFV7wUREcnvlQD3+xyk3p5na9LELR+rkIGdxVbLb3WJ73rhgjrc/ywyUh10Q=="
   "resolved" "https://registry.npmjs.org/@react-native-community/voice/-/voice-1.1.9.tgz"
@@ -5888,10 +5883,10 @@
   "resolved" "https://registry.npmjs.org/react-native-communications/-/react-native-communications-2.2.1.tgz"
   "version" "2.2.1"
 
-"react-native-dialogflow@^3.1.0":
-  "integrity" "sha512-5UucPRYt+hd2M9uMCIdLJD0E/mDKSQxiXL9+12tRuQ4xjTVDkXsXRlWIYQRM9l58CYywYNeIhH3/T2xqCxpgbQ=="
-  "resolved" "https://registry.npmjs.org/react-native-dialogflow/-/react-native-dialogflow-3.1.0.tgz"
-  "version" "3.1.0"
+"react-native-dialogflow@^3.1.1":
+  "integrity" "sha512-rYH4azEBeA2VCBjMXY6MOMbSfxjBy96FcSCjuFSaPm0W8O5oePkL2+vSsJ9yMyQW/74GSqW5y66kQWY3VexkqQ=="
+  "resolved" "https://registry.npmjs.org/react-native-dialogflow/-/react-native-dialogflow-3.1.1.tgz"
+  "version" "3.1.1"
   dependencies:
     "jsrsasign" "^8.0.12"
     "react-native-speech-to-text-ios" "^1.0.4"
@@ -6193,7 +6188,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^16.13.1", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@>=16.0", "react@>=16.3.0", "react@>=16.5.1", "react@>=16.6.0", "react@16 || 17", "react@16.13.1":
+"react@*", "react@^16.13.1", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@>=16.3.0", "react@>=16.5.1", "react@>=16.6.0", "react@16 || 17", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
