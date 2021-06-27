@@ -29,11 +29,7 @@ export default function Signup(props) {
                 "userType": userType
             })
 
-            if(userType === "quitter"){
-                props.navigation.navigate("Routes")
-            }else{
-                props.navigation.navigate("Survey")
-            }
+            props.navigation.navigate("Survey")
 
         }
     }
